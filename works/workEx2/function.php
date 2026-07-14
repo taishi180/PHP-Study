@@ -5,6 +5,11 @@
 function calcAverage($scores)
 {
     // ここにコードを追記
+    if (empty($scores)) {
+        return 0;
+    }
+
+    return array_sum($scores) / count($scores);
 }
 
 // 関数2: 平均点から成績を返す
@@ -15,6 +20,15 @@ function calcAverage($scores)
 function getGrade($average)
 {
     // ここにコードを追記
+    if ($average >= 90) {
+        return "優";
+    } elseif ($average >= 70) {
+        return "良";
+    } elseif ($average >= 50) {
+        return "可";
+    } else {
+        return "不可";
+    }
 }
 
 // 関数3: 合格者のみを返す
@@ -23,6 +37,19 @@ function getGrade($average)
 function getPassedStudents($students)
 {
     // ここにコードを追記
+    $passedStudents = [];
+
+    foreach ($students as $student) {
+        // 各生徒の点数（scores）から平均点を計算
+        $average = calcAverage($student['scores']);
+
+        // 平均点が60点以上の場合、合格者リストに追加
+        if ($average >= 60) {
+            $passedStudents[] = $student;
+        }
+    }
+
+    return $passedStudents;
 }
 
 // 表示用関数(編集しないこと)

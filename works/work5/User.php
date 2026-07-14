@@ -14,8 +14,8 @@ class User
     {
         $this->id = $id;
         $this->name = $name;
-        $this->setAge($age);
-        $this->setAddress($address);
+        $this->age = $age;
+        $this->address = $address;
     }
 
     // idを取得
